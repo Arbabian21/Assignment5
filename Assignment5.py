@@ -1,6 +1,9 @@
 import tkinter as tk
 import sys
 from rectpack import newPacker
+# the keyword 'self' refers to the instance of the class itself
+# allows you to access instance variables and methods within class definitions
+# when defining methods, 'self' must be the first parameter, even though it's implicitly passed by Python when calling methods
 
 class CustomCanvas:
     def __init__(self, height: int, width: int):
@@ -46,13 +49,14 @@ def pack(allRect, canvasSize):
     packed_rectangles = []
 
     # create new rectangles based on packed positions
-    for bin_index, x, y, w, h in positions:
+    for rect in positions:
+        bin_index, x, y, w, h, rid = rect
         packed_rectangles.append(Rectangle(h, w, x, y))
 
     return packed_rectangles
 
 def main():
-    # read file path from command-line arguments
+    # read file path from terminal
     if len(sys.argv) < 2:
         print("Usage: python Assignment5.py <filepath>")
         return
