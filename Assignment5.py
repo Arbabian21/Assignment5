@@ -12,10 +12,16 @@ class CustomCanvas:
     def draw_rectangle(self, rectangle, outline_color="black", fill_color="blue"):
         # draw a rectangle on the canvas
         x1, y1 = rectangle.x, rectangle.y
-        x2, y2 = x + rectangle.width, rectangle.y + rectangle.height
-        self.canvas.create_rectangle(x, y, x + rectangle.width, y + rectangle.height,
-                                     outline=outline_color, fill=fill_color)
-
+        x2, y2 = rectangle.x + rectangle.width, rectangle.y + rectangle.height
+        self.canvas.create_rectangle(x1, y1, x2, y2, outline=outline_color, fill=fill_color)
+        
     def display(self):
         # display the tkinter window with the drawn rectangles
         self.root.mainloop()
+
+class Rectangle:
+    def __init__(self, height, width, x=0, y=0):
+        self.height = height
+        self.width = width
+        self.x = x
+        self.y = y
